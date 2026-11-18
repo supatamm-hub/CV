@@ -1,0 +1,1453 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supatchaya Noolek | Academic Research Portfolio</title>
+    <!-- Google Fonts: Mitr -->
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-blue: #3368A0;
+            --sky-blue: #66A3BF;
+            --mint-green: #C8DFDB;
+            --warm-cream: #F2EFE7;
+            --white: #FFFFFF;
+            --text-dark: #2C3E50;
+            --text-muted: #556B82;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Mitr', sans-serif;
+            background-color: var(--warm-cream);
+            color: var(--text-dark);
+            font-weight: 400;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Scroll Progress Bar */
+        #scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 4px;
+            background: var(--primary-blue);
+            width: 0%;
+            z-index: 1001;
+            transition: width 0.1s ease;
+        }
+
+        /* Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(242, 239, 231, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(102, 163, 191, 0.2);
+            transition: var(--transition);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-weight: 600;
+            font-size: 1.25rem;
+            color: var(--primary-blue);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 400;
+            font-size: 0.95rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--primary-blue);
+            font-weight: 500;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .lang-btn {
+            background: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Mitr', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .lang-btn:hover {
+            background: var(--sky-blue);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+            background: none;
+            border: none;
+        }
+
+        /* Container & Layout */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 6rem 2rem 4rem 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+            border-bottom: 1px solid rgba(102, 163, 191, 0.15);
+        }
+
+        section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            font-weight: 300;
+            font-size: 1.05rem;
+        }
+
+        /* Hero Section */
+        #hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding-top: 4rem;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--sky-blue);
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-tagline {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .interests-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .pill {
+            background: var(--white);
+            border: 1px solid var(--sky-blue);
+            padding: 0.4rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--primary-blue);
+            font-weight: 400;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.75rem;
+            border-radius: 8px;
+            font-family: 'Mitr', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary-blue);
+            color: var(--white);
+            box-shadow: 0 4px 12px rgba(51, 104, 160, 0.2);
+        }
+
+        .btn-primary:hover {
+            background: #275382;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary-blue);
+            border: 1.5px solid var(--primary-blue);
+        }
+
+        .btn-outline:hover {
+            background: rgba(51, 104, 160, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .hero-illustration {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(51, 104, 160, 0.08);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(102, 163, 191, 0.2);
+        }
+
+        .hero-illustration svg {
+            width: 100%;
+            max-width: 280px;
+            height: auto;
+        }
+
+        /* Featured Highlights */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .highlight-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 24px rgba(51, 104, 160, 0.06);
+            border: 1px solid rgba(102, 163, 191, 0.2);
+            transition: var(--transition);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 32px rgba(51, 104, 160, 0.12);
+            border-color: var(--sky-blue);
+        }
+
+        .highlight-badge {
+            display: inline-block;
+            background: rgba(102, 163, 191, 0.15);
+            color: var(--primary-blue);
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            margin-bottom: 1.2rem;
+            align-self: flex-start;
+        }
+
+        .highlight-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.75rem;
+            font-weight: 600;
+        }
+
+        .highlight-meta {
+            color: var(--sky-blue);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .highlight-card p {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+        }
+
+        .expandable-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            border-top: 1px dashed rgba(102, 163, 191, 0.3);
+            margin-top: 0;
+            padding-top: 0;
+        }
+
+        .highlight-card.active .expandable-content {
+            max-height: 250px;
+            margin-top: 1rem;
+            padding-top: 1rem;
+        }
+
+        .expand-toggle-btn {
+            background: none;
+            border: none;
+            color: var(--primary-blue);
+            font-family: 'Mitr', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0;
+        }
+
+        /* About Me Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .about-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 24px rgba(51, 104, 160, 0.06);
+            border: 1px solid rgba(102, 163, 191, 0.2);
+        }
+
+        .bullet-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .bullet-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+
+        .bullet-list i {
+            color: var(--sky-blue);
+            margin-top: 0.3rem;
+        }
+
+        .info-card-box {
+            background: var(--mint-green);
+            border-radius: 16px;
+            padding: 2rem;
+            color: var(--text-dark);
+            border: 1px solid rgba(102, 163, 191, 0.2);
+        }
+
+        .info-card-box h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .info-card-box p {
+            font-size: 0.95rem;
+            margin-bottom: 0.75rem;
+            font-weight: 300;
+        }
+
+        /* Research Interests */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .interest-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.75rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: 1px solid rgba(102, 163, 191, 0.2);
+            box-shadow: 0 4px 12px rgba(51, 104, 160, 0.03);
+            text-align: center;
+        }
+
+        .interest-card:hover, .interest-card.selected {
+            background: var(--primary-blue);
+            color: var(--white);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(51, 104, 160, 0.15);
+        }
+
+        .interest-card i {
+            font-size: 2rem;
+            color: var(--sky-blue);
+            margin-bottom: 1rem;
+            transition: var(--transition);
+        }
+
+        .interest-card:hover i, .interest-card.selected i {
+            color: var(--mint-green);
+        }
+
+        .interest-card h4 {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .interest-card p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            transition: var(--transition);
+        }
+
+        .interest-card:hover p, .interest-card.selected p {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .interest-detail-box {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid rgba(102, 163, 191, 0.2);
+            box-shadow: 0 4px 12px rgba(51, 104, 160, 0.03);
+        }
+
+        .interest-detail-box h3 {
+            color: var(--primary-blue);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .interest-detail-box p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        /* Research Experience */
+        .experience-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .exp-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 24px rgba(51, 104, 160, 0.06);
+            border: 1px solid rgba(102, 163, 191, 0.2);
+        }
+
+        .exp-date {
+            background: var(--mint-green);
+            color: var(--primary-blue);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 1rem;
+        }
+
+        .exp-card h3 {
+            font-size: 1.25rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.25rem;
+            font-weight: 600;
+        }
+
+        .exp-lab {
+            font-size: 0.95rem;
+            color: var(--sky-blue);
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        /* Technical Skills Section Background set to White */
+        .skills-container {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 8px 24px rgba(51, 104, 160, 0.06);
+            border: 1px solid rgba(102, 163, 191, 0.2);
+        }
+
+        .skills-container h3 {
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skills-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .skill-tag {
+            background: var(--warm-cream);
+            color: var(--primary-blue);
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 400;
+            border: 1px solid rgba(102, 163, 191, 0.2);
+        }
+
+        /* Academic Projects & Awards */
+        .filter-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: var(--white);
+            border: 1px solid rgba(102, 163, 191, 0.3);
+            color: var(--text-dark);
+            padding: 0.5rem 1.25rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Mitr', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            transition: var(--transition);
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary-blue);
+            color: var(--white);
+            border-color: var(--primary-blue);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 1.75rem;
+            border: 1px solid rgba(102, 163, 191, 0.2);
+            box-shadow: 0 4px 12px rgba(51, 104, 160, 0.03);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(51, 104, 160, 0.08);
+            border-color: var(--sky-blue);
+        }
+
+        .project-level {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--sky-blue);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card h4 {
+            font-size: 1.1rem;
+            color: var(--primary-blue);
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+        }
+
+        .project-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        /* Research Roadmap */
+        .roadmap-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .roadmap-card {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid rgba(102, 163, 191, 0.2);
+            box-shadow: 0 6px 18px rgba(51, 104, 160, 0.05);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .roadmap-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--sky-blue);
+        }
+
+        .roadmap-phase {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--sky-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .roadmap-card h3 {
+            font-size: 1.2rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .roadmap-details {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border-top: 1px dashed rgba(102, 163, 191, 0.3);
+            margin-top: 0;
+            padding-top: 0;
+            font-weight: 300;
+        }
+
+        .roadmap-card.active .roadmap-details {
+            max-height: 250px;
+            margin-top: 1rem;
+            padding-top: 1rem;
+        }
+
+        /* Contact Section */
+        .contact-box {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto;
+            border: 1px solid rgba(102, 163, 191, 0.2);
+            box-shadow: 0 10px 30px rgba(51, 104, 160, 0.06);
+        }
+
+        .contact-box h3 {
+            font-size: 1.8rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .contact-box p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .contact-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: var(--primary-blue);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease;
+            z-index: 2000;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2.5rem;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            background: var(--warm-cream);
+            border-top: 1px solid rgba(102, 163, 191, 0.15);
+            font-weight: 300;
+        }
+
+        /* Back to top button */
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--primary-blue);
+            color: var(--white);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 12px rgba(51, 104, 160, 0.3);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        #back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        #back-to-top:hover {
+            background: var(--sky-blue);
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 968px) {
+            .hero-grid, .about-grid, .highlights-grid, .experience-grid, .interests-grid, .roadmap-container {
+                grid-template-columns: 1fr;
+            }
+            .hero-content h1 {
+                font-size: 2.4rem;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--warm-cream);
+                padding: 1.5rem;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+                border-bottom: 1px solid rgba(102, 163, 191, 0.2);
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .hamburger {
+                display: block;
+            }
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="scroll-progress"></div>
+
+    <!-- Navigation Bar -->
+    <header>
+        <div class="nav-container">
+            <a href="#hero" class="logo"><i class="fa-solid fa-flask-vial"></i> Supatchaya Noolek</a>
+            <ul class="nav-links">
+                <li><a href="#hero" class="nav-link active" data-en="Home" data-th="หน้าแรก">หน้าแรก</a></li>
+                <li><a href="#highlights" class="nav-link" data-en="Highlights" data-th="ผลงานเด่น">ผลงานเด่น</a></li>
+                <li><a href="#about" class="nav-link" data-en="About" data-th="เกี่ยวกับฉัน">เกี่ยวกับฉัน</a></li>
+                <li><a href="#interests" class="nav-link" data-en="Interests" data-th="ความสนใจ">ความสนใจ</a></li>
+                <li><a href="#experience" class="nav-link" data-en="Experience" data-th="ประสบการณ์">ประสบการณ์</a></li>
+                <li><a href="#projects" class="nav-link" data-en="Projects" data-th="โครงงาน">โครงงาน</a></li>
+                <li><a href="#roadmap" class="nav-link" data-en="Roadmap" data-th="แผนงาน">แผนงาน</a></li>
+                <li><a href="#contact" class="nav-link" data-en="Contact" data-th="ติดต่อ">ติดต่อ</a></li>
+                <li><button class="lang-btn" id="langToggle">EN / ไทย</button></li>
+            </ul>
+            <button class="hamburger" id="hamburgerBtn"><i class="fa-solid fa-bars"></i></button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+
+        <!-- Section 1: Hero / Introduction -->
+        <section id="hero">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1>Supatchaya Noolek</h1>
+                    <div class="hero-subtitle" data-en="Biotechnology Student | Mahidol University" data-th="นักศึกษาสาขาเทคโนโลยีชีวภาพ | มหาวิทยาลัยมหิดล">นักศึกษาสาขาเทคโนโลยีชีวภาพ | มหาวิทยาลัยมหิดล</div>
+                    <p class="hero-tagline" data-en="&ldquo;From Microbes to Molecules.&rdquo;<br>Exploring Microbial Diversity, Molecular Regulation and Bioactive Compounds." data-th="&ldquo;From Microbes to Molecules.&rdquo;<br>Exploring Microbial Diversity, Molecular Regulation and Bioactive Compounds.">
+                        “From Microbes to Molecules.”<br>Exploring Microbial Diversity, Molecular Regulation and Bioactive Compounds.
+                    </p>
+                    <div class="interests-pills">
+                        <span class="pill" data-en="⌬ Microbial Biotechnology" data-th="⌬ จุลชีววิทยาเทคโนโลยีชีวภาพ">⌬ จุลชีววิทยาเทคโนโลยีชีวภาพ</span>
+                        <span class="pill" data-en="⚗ Molecular Biology" data-th="⚗ ชีววิทยาระดับโมเลกุล">⚗ ชีววิทยาระดับโมเลกุล</span>
+                        <span class="pill" data-en="✦ Secondary Metabolites" data-th="✦ เมแทบอไลต์ทุติยภูมิ">✦ เมแทบอไลต์ทุติยภูมิ</span>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="#interests" class="btn btn-primary">
+                            <span data-en="Explore My Research" data-th="สำรวจงานวิจัยของฉัน">สำรวจงานวิจัยของฉัน</span> <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#highlights" class="btn btn-outline">
+                            <span data-en="View Highlights" data-th="ดูผลงานเด่น">ดูผลงานเด่น</span>
+                        </a>
+                        <a href="#contact" class="btn btn-outline">
+                            <span data-en="Contact" data-th="ติดต่อ">ติดต่อ</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-illustration">
+                    <!-- Minimal Scientific DNA & Cell Illustration -->
+                    <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="100" cy="100" r="85" stroke="#66A3BF" stroke-width="2" stroke-dasharray="6 6" opacity="0.6"/>
+                        <circle cx="100" cy="100" r="55" stroke="#3368A0" stroke-width="1.5" opacity="0.4"/>
+                        <!-- Rod cell -->
+                        <rect x="70" y="85" width="60" height="30" rx="15" fill="#C8DFDB" stroke="#3368A0" stroke-width="2"/>
+                        <!-- Internal DNA strand -->
+                        <path d="M80 95 C90 105, 110 95, 120 105" stroke="#3368A0" stroke-width="2" stroke-linecap="round"/>
+                        <path d="M80 105 C90 95, 110 105, 120 95" stroke="#66A3BF" stroke-width="2" stroke-linecap="round"/>
+                        <!-- Floating molecules / dots -->
+                        <circle cx="45" cy="65" r="8" fill="#66A3BF" opacity="0.8"/>
+                        <circle cx="155" cy="135" r="6" fill="#3368A0" opacity="0.7"/>
+                        <circle cx="130" cy="50" r="5" fill="#C8DFDB" stroke="#3368A0" stroke-width="1.5"/>
+                        <circle cx="60" cy="140" r="7" fill="#3368A0" opacity="0.5"/>
+                        <line x1="45" y1="65" x2="70" y2="90" stroke="#66A3BF" stroke-width="1.5" stroke-dasharray="3 3"/>
+                        <line x1="130" y1="50" x2="110" y2="85" stroke="#3368A0" stroke-width="1.5" stroke-dasharray="3 3"/>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Featured Highlights (Most Important) -->
+        <section id="highlights">
+            <h2 class="section-title">
+                <i class="fa-solid fa-star"></i> <span data-en="Featured Highlights" data-th="ผลงานเด่นระดับนานาชาติและรางวัลนวัตกรรม">ผลงานเด่นระดับนานาชาติและรางวัลนวัตกรรม</span>
+            </h2>
+            <p class="section-subtitle" data-en="Key international achievements and innovation awards representing academic excellence." data-th="ผลงานความสำเร็จระดับนานาชาติและรางวัลนวัตกรรมสำคัญที่สะท้อนความมุ่งมั่นทางวิชาการ">
+                ผลงานความสำเร็จระดับนานาชาติและรางวัลนวัตกรรมสำคัญที่สะท้อนความมุ่งมั่นทางวิชาการ
+            </p>
+
+            <div class="highlights-grid">
+                <!-- Highlight 01 -->
+                <div class="highlight-card" id="high-1">
+                    <div>
+                        <span class="highlight-badge"><i class="fa-solid fa-plane-departure"></i> <span data-en="International Academic Experience" data-th="ประสบการณ์วิชาการนานาชาติ">ประสบการณ์วิชาการนานาชาติ</span></span>
+                        <h3>SDGs + Mobility MaPs 2026</h3>
+                        <div class="highlight-meta">
+                            <span><i class="fa-solid fa-location-dot"></i> Malaysia</span>
+                            <span><i class="fa-solid fa-calendar-days"></i> 19–23 July 2026</span>
+                        </div>
+                        <p data-en="Exploring Innovation Through Global Collaboration. Academic mobility focusing on Innovation, Sustainability, and KombuBag Project." data-th="การแลกเปลี่ยนเรียนรู้และสร้างสรรค์นวัตกรรมผ่านความร่วมมือระดับสากล โครงการ KombuBag และความยั่งยืน">
+                            การแลกเปลี่ยนเรียนรู้และสร้างสรรค์นวัตกรรมผ่านความร่วมมือระดับสากล โครงการ KombuBag และความยั่งยืน
+                        </p>
+                    </div>
+                    <div>
+                        <div class="expandable-content" data-en="Collaborated with premier university networks and research organizations including UM, UPM, CEBAR, and UMSDC to exchange knowledge on sustainable biotechnology and global innovation frameworks." data-th="ร่วมมือกับเครือข่ายมหาวิทยาลัยชั้นนำและหน่วยงานวิจัย ได้แก่ UM, UPM, CEBAR และ UMSDC เพื่อแลกเปลี่ยนองค์ความรู้ด้านเทคโนโลยีชีวภาพเพื่อความยั่งยืน">
+                            ร่วมมือกับเครือข่ายมหาวิทยาลัยชั้นนำและหน่วยงานวิจัย ได้แก่ UM, UPM, CEBAR และ UMSDC เพื่อแลกเปลี่ยนองค์ความรู้ด้านเทคโนโลยีชีวภาพเพื่อความยั่งยืน
+                        </div>
+                        <button class="expand-toggle-btn" onclick="toggleHighlight('high-1')">
+                            <span class="toggle-text" data-en="Read More" data-th="อ่านเพิ่มเติม">อ่านเพิ่มเติม</span> <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Highlight 02 -->
+                <div class="highlight-card" id="high-2">
+                    <div>
+                        <span class="highlight-badge"><i class="fa-solid fa-medal"></i> <span data-en="Innovation & Invention Achievement" data-th="รางวัลนวัตกรรมและสิ่งประดิษฐ์">รางวัลนวัตกรรมและสิ่งประดิษฐ์</span></span>
+                        <h3>Thailand New Gen Inventors Award (I-New Gen Award)</h3>
+                        <div class="highlight-meta">
+                            <span><i class="fa-solid fa-award"></i> National Recognition</span>
+                            <span><i class="fa-solid fa-flask"></i> Biotechnology Applications</span>
+                        </div>
+                        <p data-en="Recognition in scientific creativity, invention development, and biotechnology applications for sustainable solutions." data-th="ความสำเร็จด้านความคิดสร้างสรรค์ทางวิทยาศาสตร์ การพัฒนานวัตกรรม และการประยุกต์ใช้เทคโนโลยีชีวภาพ">
+                            ความสำเร็จด้านความคิดสร้างสรรค์ทางวิทยาศาสตร์ การพัฒนานวัตกรรม และการประยุกต์ใช้เทคโนโลยีชีวภาพ
+                        </p>
+                    </div>
+                    <div>
+                        <div class="expandable-content" data-en="Demonstrated high potential in translating biological concepts into tangible technological innovations, evaluated by national expert panels." data-th="แสดงให้เห็นถึงศักยภาพในการแปลงองค์ความรู้ทางชีววิทยาให้กลายเป็นนวัตกรรมเทคโนโลยีที่จับต้องได้ ผ่านการประเมินจากคณะกรรมการผู้ทรงคุณวุฒิระดับประเทศ">
+                            แสดงให้เห็นถึงศักยภาพในการแปลงองค์ความรู้ทางชีววิทยาให้กลายเป็นนวัตกรรมเทคโนโลยีที่จับต้องได้ ผ่านการประเมินจากคณะกรรมการผู้ทรงคุณวุฒิระดับประเทศ
+                        </div>
+                        <button class="expand-toggle-btn" onclick="toggleHighlight('high-2')">
+                            <span class="toggle-text" data-en="Read More" data-th="อ่านเพิ่มเติม">อ่านเพิ่มเติม</span> <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: About Me -->
+        <section id="about">
+            <h2 class="section-title">
+                <i class="fa-solid fa-user-graduate"></i> <span data-en="About Me" data-th="เกี่ยวกับฉัน">เกี่ยวกับฉัน</span>
+            </h2>
+            <p class="section-subtitle" data-en="Academic background and research focus overview." data-th="ข้อมูลพื้นฐานทางการศึกษาและทิศทางการวิจัย">
+                ข้อมูลพื้นฐานทางการศึกษาและทิศทางการวิจัย
+            </p>
+
+            <div class="about-grid">
+                <div class="about-card">
+                    <ul class="bullet-list">
+                        <li><i class="fa-solid fa-circle-check"></i> <span data-en="Biotechnology Undergraduate Student at Faculty of Science, Mahidol University (2024–Present)." data-th="นักศึกษาปริญญาตรี สาขาเทคโนโลยีชีวภาพ คณะวิทยาศาสตร์ มหาวิทยาลัยมหิดล (2024–ปัจจุบัน)">นักศึกษาปริญญาตรี สาขาเทคโนโลยีชีวภาพ คณะวิทยาศาสตร์ มหาวิทยาลัยมหิดล (2024–ปัจจุบัน)</span></li>
+                        <li><i class="fa-solid fa-circle-check"></i> <span data-en="Passionate about Molecular Microbiology, Gene Regulation, and Microbial Genetics." data-th="มีความสนใจด้านจุลชีววิทยาระดับโมเลกุล, การควบคุมการแสดงออกของยีน และพันธุศาสตร์จุลินทรีย์">มีความสนใจด้านจุลชีววิทยาระดับโมเลกุล, การควบคุมการแสดงออกของยีน และพันธุศาสตร์จุลินทรีย์</span></li>
+                        <li><span data-en="Focusing on Secondary Metabolite Biosynthesis and Cryptic Biosynthetic Gene Cluster (BGC) Activation." data-th="มุ่งเน้นการศึกษาการสังเคราะห์เมแทบอไลต์ทุติยภูมิและการกระตุ้นยีนสังเคราะห์ (Cryptic BGCs)">มุ่งเน้นการศึกษาการสังเคราะห์เมแทบอไลต์ทุติยภูมิและการกระตุ้นยีนสังเคราะห์ (Cryptic BGCs)</span></li>
+                        <li><i class="fa-solid fa-circle-check"></i> <span data-en="Interested in Omics-based Research for microbial functional analysis and bioactive discovery." data-th="สนใจการศึกษาวิเคราะห์ด้วย Omics เพื่อศึกษาหน้าที่ของจุลินทรีย์และการค้นหาสารออกฤทธิ์ทางชีวภาพ">สนใจการศึกษาวิเคราะห์ด้วย Omics เพื่อศึกษาหน้าที่ของจุลินทรีย์และการค้นหาสารออกฤทธิ์ทางชีวภาพ</span></li>
+                    </ul>
+                </div>
+                <div class="info-card-box">
+                    <h3 data-en="Quick Academic Profile" data-th="ข้อมูลสรุปทางวิชาการ">ข้อมูลสรุปทางวิชาการ</h3>
+                    <p><strong><span data-en="Degree:" data-th="ระดับการศึกษา:">ระดับการศึกษา:</span></strong> <span data-en="B.Sc. Biotechnology" data-th="วท.บ. เทคโนโลยีชีวภาพ">วท.บ. เทคโนโลยีชีวภาพ</span></p>
+                    <p><strong><span data-en="Institution:" data-th="สถาบัน:">สถาบัน:</span></strong> <span data-en="Mahidol University" data-th="มหาวิทยาลัยมหิดล">มหาวิทยาลัยมหิดล</span></p>
+                    <p><strong><span data-en="Core Focus:" data-th="ความสนใจหลัก:">ความสนใจหลัก:</span></strong> <span data-en="Molecular Regulation & Omics" data-th="การควบคุมระดับโมเลกุลและโอมิกส์">การควบคุมระดับโมเลกุลและโอมิกส์</span></p>
+                    <p><strong><span data-en="Status:" data-th="สถานะ:">สถานะ:</span></strong> <span data-en="Active Undergraduate Researcher" data-th="นักศึกษาวิจัยระดับปริญญาตรี">นักศึกษาวิจัยระดับปริญญาตรี</span></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Research Interests -->
+        <section id="interests">
+            <h2 class="section-title">
+                <i class="fa-solid fa-dna"></i> <span data-en="Research Interests" data-th="ความสนใจด้านการวิจัย">ความสนใจด้านการวิจัย</span>
+            </h2>
+            <p class="section-subtitle" data-en="Click each card to explore specific research areas and molecular mechanisms." data-th="คลิกการ์ดแต่ละหัวข้อเพื่อดูรายละเอียดเชิงลึกและกลไกระดับโมเลกุล">
+                คลิกการ์ดแต่ละหัวข้อเพื่อดูรายละเอียดเชิงลึกและกลไกระดับโมเลกุล
+            </p>
+
+            <div class="interests-grid">
+                <div class="interest-card selected" onclick="selectInterest(0)">
+                    <i class="fa-solid fa-microscope"></i>
+                    <h4 data-en="Microbial Biotechnology" data-th="เทคโนโลยีชีวภาพจุลินทรีย์">เทคโนโลยีชีวภาพจุลินทรีย์</h4>
+                    <p data-en="Exploration of microbial diversity and industrial applications." data-th="การสำรวจความหลากหลายของจุลินทรีย์และการประยุกต์ใช้ในอุตสาหกรรม">การสำรวจความหลากหลายของจุลินทรีย์และการประยุกต์ใช้ในอุตสาหกรรม</p>
+                </div>
+                <div class="interest-card" onclick="selectInterest(1)">
+                    <i class="fa-solid fa-code-branch"></i>
+                    <h4 data-en="Molecular Regulation" data-th="การควบคุมระดับโมเลกุล">การควบคุมระดับโมเลกุล</h4>
+                    <p data-en="Regulatory pathways governing cellular responses." data-th="วิถีการควบคุมที่กำกับการตอบสนองของเซลล์จุลินทรีย์">วิถีการควบคุมที่กำกับการตอบสนองของเซลล์จุลินทรีย์</p>
+                </div>
+                <div class="interest-card" onclick="selectInterest(2)">
+                    <i class="fa-solid fa-chart-line"></i>
+                    <h4 data-en="Secondary Metabolite Biosynthesis" data-th="การสังเคราะห์เมแทบอไลต์ทุติยภูมิ">การสังเคราะห์เมแทบอไลต์ทุติยภูมิ</h4>
+                    <p data-en="Biosynthetic pathways of bioactive compounds." data-th="วิถีชีวสังเคราะห์ของสารออกฤทธิ์ทางชีวภาพและสารต้านจุลชีพ">วิถีชีวสังเคราะห์ของสารออกฤทธิ์ทางชีวภาพและสารต้านจุลชีพ</p>
+                </div>
+                <div class="interest-card" onclick="selectInterest(3)">
+                    <i class="fa-solid fa-database"></i>
+                    <h4 data-en="Microbial Genomics & Omics" data-th="จีโนมิกส์และโอมิกส์จุลินทรีย์">จีโนมิกส์และโอมิกส์จุลินทรีย์</h4>
+                    <p data-en="High-throughput genomic and transcriptomic analysis." data-th="การวิเคราะห์ข้อมูลพันธุกรรมขั้นสูงและทรานสคริปโตมิกส์">การวิเคราะห์ข้อมูลพันธุกรรมขั้นสูงและทรานสคริปโตมิกส์</p>
+                </div>
+                <div class="interest-card" onclick="selectInterest(4)">
+                    <i class="fa-solid fa-atom"></i>
+                    <h4 data-en="Microbial Genetics" data-th="พันธุศาสตร์จุลินทรีย์">พันธุศาสตร์จุลินทรีย์</h4>
+                    <p data-en="Genetic manipulation and gene expression studies." data-th="การปรับแต่งทางพันธุศาสตร์และการศึกษาการแสดงออกของยีน">การปรับแต่งทางพันธุศาสตร์และการศึกษาการแสดงออกของยีน</p>
+                </div>
+                <div class="interest-card" onclick="selectInterest(5)">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <h4 data-en="Cryptic BGC Activation" data-th="การกระตุ้นยีนสังเคราะห์ (Cryptic BGCs)">การกระตุ้นยีนสังเคราะห์ (Cryptic BGCs)</h4>
+                    <p data-en="Awakening silent biosynthetic gene clusters." data-th="การปลุกยีนสร้างสารทุติยภูมิที่ซ่อนอยู่เพื่อค้นหาสารใหม่">การปลุกยีนสร้างสารทุติยภูมิที่ซ่อนอยู่เพื่อค้นหาสารใหม่</p>
+                </div>
+            </div>
+
+            <div class="interest-detail-box" id="interestDetail">
+                <h3 id="detailTitle">Microbial Biotechnology</h3>
+                <p id="detailDesc">Focusing on the isolation, screening, and utilization of beneficial microorganisms for agricultural and environmental applications, optimizing growth parameters and physiological traits.</p>
+            </div>
+        </section>
+
+        <!-- Section 5: Research Experience & Technical Skills -->
+        <section id="experience">
+            <h2 class="section-title">
+                <i class="fa-solid fa-flask-vial"></i> <span data-en="Research Experience & Laboratory Skills" data-th="ประสบการณ์ฝึกงานวิจัยและทักษะห้องปฏิบัติการ">ประสบการณ์ฝึกงานวิจัยและทักษะห้องปฏิบัติการ</span>
+            </h2>
+            <p class="section-subtitle" data-en="Hands-on laboratory training and core technical proficiencies." data-th="ประสบการณ์ปฏิบัติการวิจัยจริงและความเชี่ยวชาญทางเทคนิคพื้นฐาน">
+                ประสบการณ์ปฏิบัติการวิจัยจริงและความเชี่ยวชาญทางเทคนิคพื้นฐาน
+            </p>
+
+            <div class="experience-grid">
+                <div class="exp-card">
+                    <span class="exp-date">June 2025</span>
+                    <h3 data-en="Research Trainee" data-th="นักวิจัยฝึกปฏิบัติการ">นักวิจัยฝึกปฏิบัติการ</h3>
+                    <div class="exp-lab" data-en="Laboratory of Asst. Prof. Dr. Bungonsiri Intra" data-th="ห้องปฏิบัติการ ผศ.ดร.บังอรศิริ อินตรา">ห้องปฏิบัติการ ผศ.ดร.บังอรศิริ อินตรา</div>
+                    <ul class="bullet-list" style="font-size: 0.9rem;">
+                        <li><i class="fa-solid fa-chevron-right"></i> <span data-en="Isolation and screening of microorganisms from wastewater samples." data-th="การคัดแยกและคัดกรองจุลินทรีย์จากตัวอย่างน้ำเสีย">การคัดแยกและคัดกรองจุลินทรีย์จากตัวอย่างน้ำเสีย</span></li>
+                        <li><i class="fa-solid fa-chevron-right"></i> <span data-en="Screening for potential plastic-degrading microorganisms." data-th="การศึกษาจุลินทรีย์ที่มีศักยภาพในการย่อยสลายพลาสติก">การศึกษาจุลินทรีย์ที่มีศักยภาพในการย่อยสลายพลาสติก</span></li>
+                    </ul>
+                </div>
+
+                <div class="exp-card">
+                    <span class="exp-date">July 2025</span>
+                    <h3 data-en="Research Trainee" data-th="นักวิจัยฝึกปฏิบัติการ">นักวิจัยฝึกปฏิบัติการ</h3>
+                    <div class="exp-lab" data-en="Laboratory of Assoc. Prof. Dr. Choowong Auesukaree" data-th="ห้องปฏิบัติการ รศ. ดร. ชูวงศ์ เอื้อสุขอารี">ห้องปฏิบัติการ รศ. ดร. ชูวงศ์ เอื้อสุขอารี</div>
+                    <ul class="bullet-list" style="font-size: 0.9rem;">
+                        <li><i class="fa-solid fa-chevron-right"></i> <span data-en="Research on thermotolerant yeast physiology and stress response." data-th="การศึกษาวิจัยเกี่ยวกับยีสต์ทนร้อนและการตอบสนองต่อสภาวะเครียด">การศึกษาวิจัยเกี่ยวกับยีสต์ทนร้อนและการตอบสนองต่อสภาวะเครียด</span></li>
+                        <li><i class="fa-solid fa-chevron-right"></i> <span data-en="Bioreactor applications and fermentation parameter monitoring." data-th="การประยุกต์ใช้ถังหมัก (Bioreactor) และการติดตามพารามิเตอร์การหมัก">การประยุกต์ใช้ถังหมัก (Bioreactor) และการติดตามพารามิเตอร์การหมัก</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Technical Skills Section with Pure White background (#FFFFFF) -->
+            <div class="skills-container">
+                <h3><i class="fa-solid fa-gears"></i> <span data-en="Core Technical Skills" data-th="ทักษะความสามารถทางเทคนิค">ทักษะความสามารถทางเทคนิค</span></h3>
+                <div class="skills-pills">
+                    <span class="skill-tag">Streak Plate</span>
+                    <span class="skill-tag">Pour Plate</span>
+                    <span class="skill-tag">Media Preparation</span>
+                    <span class="skill-tag">DNA Extraction</span>
+                    <span class="skill-tag">PCR</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Academic Projects & Awards -->
+        <section id="projects">
+            <h2 class="section-title">
+                <i class="fa-solid fa-trophy"></i> <span data-en="Academic Projects & Competitions" data-th="โครงงานวิชาการและการแข่งขัน">โครงงานวิชาการและการแข่งขัน</span>
+            </h2>
+            <p class="section-subtitle" data-en="Filter through university and high school innovation projects." data-th="เลือกดูโครงงานนวัตกรรมระดับมหาวิทยาลัยและระดับมัธยมศึกษา">
+                เลือกดูโครงงานนวัตกรรมระดับมหาวิทยาลัยและระดับมัธยมศึกษา
+            </p>
+
+            <div class="filter-buttons">
+                <button class="filter-btn active" onclick="filterProjects('all')" data-en="All Projects" data-th="ทั้งหมด">ทั้งหมด</button>
+                <button class="filter-btn" onclick="filterProjects('university')" data-en="University Level" data-th="ระดับมหาวิทยาลัย">ระดับมหาวิทยาลัย</button>
+                <button class="filter-btn" onclick="filterProjects('highschool')" data-en="High School Level" data-th="ระดับมัธยมศึกษา">ระดับมัธยมศึกษา</button>
+            </div>
+
+            <div class="projects-grid">
+                <!-- University Projects -->
+                <div class="project-card" data-category="university">
+                    <div>
+                        <div class="project-level" data-en="University Level • 2026" data-th="ระดับมหาวิทยาลัย • 2026">ระดับมหาวิทยาลัย • 2026</div>
+                        <h4 data-en="KMUTNB Innovation Awards 2026" data-th="KMUTNB Innovation Awards 2026">KMUTNB Innovation Awards 2026</h4>
+                        <p data-en="Bioactive Cellulose Acetate Fibers for Burn Wound Healing Derived from Kombucha Bacterial Cellulose." data-th="เส้นใยเซลลูโลสอะซิเตดออกฤทธิ์ทางชีวภาพสำหรับการรักษาแผลไฟไหม้จากเซลลูโลสแบคทีเรียคอมบูชา">เส้นใยเซลลูโลสอะซิเตดออกฤทธิ์ทางชีวภาพสำหรับการรักษาแผลไฟไหม้จากเซลลูโลสแบคทีเรียคอมบูชา</p>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="university">
+                    <div>
+                        <div class="project-level" data-en="University Level • 2025" data-th="ระดับมหาวิทยาลัย • 2025">ระดับมหาวิทยาลัย • 2025</div>
+                        <h4 data-en="KMUTNB Innovation Awards 2025" data-th="KMUTNB Innovation Awards 2025">KMUTNB Innovation Awards 2025</h4>
+                        <p data-en="Kombucha-derived Bioplastic Film development for sustainable packaging." data-th="การพัฒนาฟิล์มพลาสติกชีวภาพจากคอมบูชาเพื่อบรรจุภัณฑ์ยั่งยืน">การพัฒนาฟิล์มพลาสติกชีวภาพจากคอมบูชาเพื่อบรรจุภัณฑ์ยั่งยืน</p>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="university">
+                    <div>
+                        <div class="project-level" data-en="University Level • 2025" data-th="ระดับมหาวิทยาลัย • 2025">ระดับมหาวิทยาลัย • 2025</div>
+                        <h4 data-en="Thai SynBio Challenge 2025" data-th="Thai SynBio Challenge 2025">Thai SynBio Challenge 2025</h4>
+                        <p data-en="Chromogenic Hair Dyes utilizing synthetic biology approaches." data-th="ผลิตภัณฑ์สีย้อมผมโครโมเจนิคโดยประยุกต์ใช้แนวทางชีววิทยาสังเคราะห์">ผลิตภัณฑ์สีย้อมผมโครโมเจนิคโดยประยุกต์ใช้แนวทางชีววิทยาสังเคราะห์</p>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="university">
+                    <div>
+                        <div class="project-level" data-en="University Level • 2024" data-th="ระดับมหาวิทยาลัย • 2024">ระดับมหาวิทยาลัย • 2024</div>
+                        <h4 data-en="Green Innovation Contest 2024" data-th="Green Innovation Contest 2024">Green Innovation Contest 2024</h4>
+                        <p data-en="Sustainable green technology and eco-friendly bioprocess innovation." data-th="เทคโนโลยีสีเขียวเพื่อความยั่งยืนและนวัตกรรมกระบวนการชีวภาพที่เป็นมิตรต่อสิ่งแวดล้อม">เทคโนโลยีสีเขียวเพื่อความยั่งยืนและนวัตกรรมกระบวนการชีวภาพที่เป็นมิตรต่อสิ่งแวดล้อม</p>
+                    </div>
+                </div>
+
+                <!-- High School Projects -->
+                <div class="project-card" data-category="highschool">
+                    <div>
+                        <div class="project-level" data-en="High School Level • 2024" data-th="ระดับมัธยมศึกษา • 2024">ระดับมัธยมศึกษา • 2024</div>
+                        <h4 data-en="Young Scientist Competition (YSC) 2024" data-th="Young Scientist Competition (YSC) 2024">Young Scientist Competition (YSC) 2024</h4>
+                        <p data-en="Scientific research project presented at national science competition." data-th="โครงงานวิจัยทางวิทยาศาสตร์ระดับเยาวชนประจำปี 2024">โครงงานวิจัยทางวิทยาศาสตร์ระดับเยาวชนประจำปี 2024</p>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="highschool">
+                    <div>
+                        <div class="project-level" data-en="High School Level • 2023" data-th="ระดับมัธยมศึกษา • 2023">ระดับมัธยมศึกษา • 2023</div>
+                        <h4 data-en="STEAMs Co-Creation Project 2023" data-th="STEAMs Co-Creation Project 2023">STEAMs Co-Creation Project 2023</h4>
+                        <p data-en="Interdisciplinary science, technology, engineering, arts, and mathematics project." data-th="โครงงานบูรณาการความรู้สะเต็มศึกษา (STEAMs) เพื่อการแก้ปัญหาเชิงสร้างสรรค์">โครงงานบูรณาการความรู้สะเต็มศึกษา (STEAMs) เพื่อการแก้ปัญหาเชิงสร้างสรรค์</p>
+                    </div>
+                </div>
+
+                <div class="project-card" data-category="highschool">
+                    <div>
+                        <div class="project-level" data-en="High School Level" data-th="ระดับมัธยมศึกษา">ระดับมัธยมศึกษา</div>
+                        <h4 data-en="Thai Science Camp (TSC) 14" data-th="Thai Science Camp (TSC) 14">Thai Science Camp (TSC) 14</h4>
+                        <p data-en="Active participation in scientific leadership and collaborative research camps." data-th="การเข้าร่วมค่ายพัฒนาความเป็นผู้นำทางวิทยาศาสตร์และสร้างเครือข่ายนักวิจัยเยาวชน">การเข้าร่วมค่ายพัฒนาความเป็นผู้นำทางวิทยาศาสตร์และสร้างเครือข่ายนักวิจัยเยาวชน</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: Research Roadmap -->
+        <section id="roadmap">
+            <h2 class="section-title">
+                <i class="fa-solid fa-route"></i> <span data-en="Research Roadmap" data-th="แผนผังเส้นทางวิจัย (Research Roadmap)">แผนผังเส้นทางวิจัย (Research Roadmap)</span>
+            </h2>
+            <p class="section-subtitle" data-en="Three-phase professional and academic growth trajectory." data-th="เป้าหมายและทิศทางการพัฒนาความเชี่ยวชาญ 3 ระยะ">
+                เป้าหมายและทิศทางการพัฒนาความเชี่ยวชาญ 3 ระยะ
+            </p>
+
+            <div class="roadmap-container">
+                <div class="roadmap-card" id="phase-1" onclick="toggleRoadmap('phase-1')">
+                    <div>
+                        <div class="roadmap-phase" data-en="Phase 01" data-th="ระยะที่ 01">ระยะที่ 01</div>
+                        <h3 data-en="Undergraduate" data-th="ระดับปริญญาตรี">ระดับปริญญาตรี</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);" data-en="Building foundations in Microbial Biotechnology, Molecular Biology, and Lab Skills." data-th="สร้างรากฐานด้านเทคโนโลยีชีวภาพจุลินทรีย์ ชีววิทยาระดับโมเลกุล และทักษะห้องปฏิบัติการ">สร้างรากฐานด้านเทคโนโลยีชีวภาพจุลินทรีย์ ชีววิทยาระดับโมเลกุล และทักษะห้องปฏิบัติการ</p>
+                    </div>
+                    <div>
+                        <div class="roadmap-details" data-en="Focusing on core coursework, hands-on lab training, gene regulation fundamentals, and omics data analysis basics." data-th="มุ่งเน้นการเรียนวิชาแกน ฝึกปฏิบัติการในห้องทดลอง พื้นฐานการควบคุมยีน และหลักการวิเคราะห์โอมิกส์เบื้องต้น">
+                            มุ่งเน้นการเรียนวิชาแกน ฝึกปฏิบัติการในห้องทดลอง พื้นฐานการควบคุมยีน และหลักการวิเคราะห์โอมิกส์เบื้องต้น
+                        </div>
+                        <button class="expand-toggle-btn" style="margin-top: 1rem;">
+                            <span data-en="Click to Expand" data-th="คลิกเพื่อดูรายละเอียด">คลิกเพื่อดูรายละเอียด</span> <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="roadmap-card" id="phase-2" onclick="toggleRoadmap('phase-2')">
+                    <div>
+                        <div class="roadmap-phase" data-en="Phase 02" data-th="ระยะที่ 02">ระยะที่ 02</div>
+                        <h3 data-en="Master's Degree" data-th="ระดับปริญญาโท">ระดับปริญญาโท</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);" data-en="Advanced Molecular Microbiology, Omics-based research, and Bioinformatics." data-th="จุลชีววิทยาระดับโมเลกุลขั้นสูง การวิจัยเชิงโอมิกส์ และชีวสารสนเทศศาสตร์">จุลชีววิทยาระดับโมเลกุลขั้นสูง การวิจัยเชิงโอมิกส์ และชีวสารสนเทศศาสตร์</p>
+                    </div>
+                    <div>
+                        <div class="roadmap-details" data-en="Specializing in microbial genomics, high-throughput data analysis, and advanced bioactive discovery projects." data-th="เชี่ยวชาญด้านจีโนมิกส์ของจุลินทรีย์ การวิเคราะห์ข้อมูลปริมาณมาก และโครงการค้นหาสารออกฤทธิ์เชิงลึก">
+                            เชี่ยวชาญด้านจีโนมิกส์ของจุลินทรีย์ การวิเคราะห์ข้อมูลปริมาณมาก และโครงการค้นหาสารออกฤทธิ์เชิงลึก
+                        </div>
+                        <button class="expand-toggle-btn" style="margin-top: 1rem;">
+                            <span data-en="Click to Expand" data-th="คลิกเพื่อดูรายละเอียด">คลิกเพื่อดูรายละเอียด</span> <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="roadmap-card" id="phase-3" onclick="toggleRoadmap('phase-3')">
+                    <div>
+                        <div class="roadmap-phase" data-en="Phase 03" data-th="ระยะที่ 03">ระยะที่ 03</div>
+                        <h3 data-en="After Master's" data-th="หลังปริญญาโท">หลังปริญญาโท</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);" data-en="Synthetic Biology, Strain Improvement, Metabolic Engineering, & Ph.D." data-th="ชีววิทยาสังเคราะห์ การปรับปรุงพันธุ์จุลินทรีย์ วิศวกรรมเมแทบอลิซึม และศึกษาต่อปริญญาเอก">ชีววิทยาสังเคราะห์ การปรับปรุงพันธุ์จุลินทรีย์ วิศวกรรมเมแทบอลิซึม และศึกษาต่อปริญญาเอก</p>
+                    </div>
+                    <div>
+                        <div class="roadmap-details" data-en="Pursuing doctoral studies and research career focused on metabolic engineering and industrial strain optimization." data-th="ศึกษาต่อระดับปริญญาเอกและมุ่งสู่เส้นทางนักวิจัยมืออาชีพด้านวิศวกรรมเมแทบอลิซึมและการพัฒนาสายพันธุ์จุลินทรีย์อุตสาหกรรม">
+                            ศึกษาต่อระดับปริญญาเอกและมุ่งสู่เส้นทางนักวิจัยมืออาชีพด้านวิศวกรรมเมแทบอลิซึมและการพัฒนาสายพันธุ์จุลินทรีย์อุตสาหกรรม
+                        </div>
+                        <button class="expand-toggle-btn" style="margin-top: 1rem;">
+                            <span data-en="Click to Expand" data-th="คลิกเพื่อดูรายละเอียด">คลิกเพื่อดูรายละเอียด</span> <i class="fa-solid fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 8: Contact -->
+        <section id="contact">
+            <div class="contact-box">
+                <h3 data-en="Get in Touch" data-th="ติดต่อพูดคุยและร่วมงานวิจัย">ติดต่อพูดคุยและร่วมงานวิจัย</h3>
+                <p data-en="Interested in academic collaboration or research discussions? Feel free to reach out." data-th="หากท่านสนใจแลกเปลี่ยนความรู้ทางวิชาการ ความร่วมมือด้านงานวิจัย หรือสอบถามข้อมูลเพิ่มเติม สามารถติดต่อได้ที่นี่ครับ/ค่ะ">
+                    หากท่านสนใจแลกเปลี่ยนความรู้ทางวิชาการ ความร่วมมือด้านงานวิจัย หรือสอบถามข้อมูลเพิ่มเติม สามารถติดต่อได้ที่นี่ครับ/ค่ะ
+                </p>
+                <div class="contact-actions">
+                    <a href="mailto:supatchaya.noolek@student.mahidol.ac.id" class="btn btn-primary">
+                        <i class="fa-solid fa-envelope"></i> <span data-en="Send Email" data-th="ส่งอีเมล">ส่งอีเมล</span>
+                    </a>
+                    <button class="btn btn-outline" onclick="copyEmail()">
+                        <i class="fa-solid fa-copy"></i> <span data-en="Copy Email" data-th="คัดลอกอีเมล">คัดลอกอีเมล</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Supatchaya Noolek. <span data-en="All rights reserved. Academic Research Portfolio." data-th="สงวนลิขสิทธิ์ พอร์ตโฟลิโ่องค์ความรู้และวิจัยทางวิชาการ">สงวนลิขสิทธิ์ พอร์ตโฟลิโ่องค์ความรู้และวิจัยทางวิชาการ</span></p>
+    </footer>
+
+    <!-- Back to top button -->
+    <button id="back-to-top" onclick="scrollToTop()"><i class="fa-solid fa-arrow-up"></i></button>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast" data-en="Email copied to clipboard!" data-th="คัดลอกอีเมลเรียบร้อยแล้ว!">คัดลอกอีเมลเรียบร้อยแล้ว!</div>
+
+    <script>
+        // Language Toggle Dictionary
+        let currentLang = 'th';
+        const langToggleBtn = document.getElementById('langToggle');
+
+        langToggleBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'th' ? 'en' : 'th';
+            updateLanguage();
+        });
+
+        function updateLanguage() {
+            const elements = document.querySelectorAll('[data-th]');
+            elements.forEach(el => {
+                if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+                    el.placeholder = el.getAttribute(`data-${currentLang}`);
+                } else {
+                    el.innerHTML = el.getAttribute(`data-${currentLang}`);
+                }
+            });
+            // Update active interest detail text based on language
+            selectInterest(selectedInterestIndex);
+        }
+
+        // Scroll Progress & Back to Top & Active Nav Indicator
+        window.addEventListener('scroll', () => {
+            const winScroll = document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('scroll-progress').style.width = scrolled + '%';
+
+            const backBtn = document.getElementById('back-to-top');
+            if (winScroll > 300) {
+                backBtn.classList.add('visible');
+            } else {
+                backBtn.classList.remove('visible');
+            }
+
+            // Active Nav Indicator
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a.nav-link');
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Mobile Hamburger Menu
+        const hamburgerBtn = document.getElementById('hamburgerBtn');
+        const navLinksMenu = document.querySelector('.nav-links');
+
+        hamburgerBtn.addEventListener('click', () => {
+            navLinksMenu.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinksMenu.classList.remove('active');
+            });
+        });
+
+        // Expand/Collapse Featured Highlights
+        function toggleHighlight(id) {
+            const card = document.getElementById(id);
+            card.classList.toggle('active');
+            const toggleText = card.querySelector('.toggle-text');
+            const isThai = currentLang === 'th';
+            if (card.classList.contains('active')) {
+                toggleText.setAttribute('data-en', 'Show Less');
+                toggleText.setAttribute('data-th', 'ย่อลง');
+                toggleText.innerText = isThai ? 'ย่อลง' : 'Show Less';
+            } else {
+                toggleText.setAttribute('data-en', 'Read More');
+                toggleText.setAttribute('data-th', 'อ่านเพิ่มเติม');
+                toggleText.innerText = isThai ? 'อ่านเพิ่มเติม' : 'Read More';
+            }
+        }
+
+        // Clickable Research Interests
+        let selectedInterestIndex = 0;
+        const interestData = [
+            {
+                th: { title: "เทคโนโลยีชีวภาพจุลินทรีย์", desc: "การสำรวจความหลากหลายของจุลินทรีย์และการประยุกต์ใช้ในอุตสาหกรรม การเพิ่มประสิทธิภาพการเจริญเติบโต และลักษณะทางสรีรวิทยาเพื่อประโยชน์ด้านเกษตรกรรมและสิ่งแวดล้อม" },
+                en: { title: "Microbial Biotechnology", desc: "Exploration of microbial diversity and industrial applications, optimizing growth parameters and physiological traits for agricultural and environmental benefits." }
+            },
+            {
+                th: { title: "การควบคุมระดับโมเลกุล", desc: "วิถีการควบคุมที่กำกับการตอบสนองของเซลล์จุลินทรีย์ กลไกการตอบสนองต่อสภาวะเครียดและการแสดงออกของยีนเป้าหมาย" },
+                en: { title: "Molecular Regulation", desc: "Regulatory pathways governing cellular responses in microorganisms, stress response mechanisms, and target gene expression." }
+            },
+            {
+                th: { title: "การสังเคราะห์เมแทบอไลต์ทุติยภูมิ", desc: "วิถีชีวสังเคราะห์ของสารออกฤทธิ์ทางชีวภาพและสารต้านจุลชีพ กลไกการสร้างสารเมแทบอไลต์ที่มีมูลค่าสูงเพื่อการประยุกต์ใช้ทางการแพทย์และเกษตรกรรม" },
+                en: { title: "Secondary Metabolite Biosynthesis", desc: "Biosynthetic pathways of bioactive compounds and antimicrobial agents, elucidating mechanisms for high-value metabolite production." }
+            },
+            {
+                th: { title: "จีโนมิกส์และโอมิกส์จุลินทรีย์", desc: "การวิเคราะห์ข้อมูลพันธุกรรมขั้นสูงและทรานสคริปโตมิกส์เพื่อทำความเข้าใจหน้าที่ของยีนและเครือข่ายเมแทบอลิซึมในระดับจีโนม" },
+                en: { title: "Microbial Genomics & Omics", desc: "High-throughput genomic and transcriptomic analysis to understand gene functions and metabolic networks at the genome scale." }
+            },
+            {
+                th: { title: "พันธุศาสตร์จุลินทรีย์", desc: "การศึกษาพันธุศาสตร์ของจุลินทรีย์ การปรับแต่งทางพันธุกรรม และการศึกษาการควบคุมการแสดงออกของยีนเพื่อพัฒนาสายพันธุ์ที่มีประสิทธิภาพสูง" },
+                en: { title: "Microbial Genetics", desc: "Genetic manipulation and gene expression studies in microorganisms to develop high-performance strains for biotechnological uses." }
+            },
+            {
+                th: { title: "การกระตุ้นยีนสังเคราะห์ (Cryptic BGCs)", desc: "การปลุกยีนสร้างสารทุติยภูมิที่ซ่อนอยู่ (Silent Biosynthetic Gene Clusters) เพื่อค้นหาสารออกฤทธิ์ทางชีวภาพชนิดใหม่จากธรรมชาติ" },
+                en: { title: "Cryptic BGC Activation", desc: "Awakening silent biosynthetic gene clusters (BGCs) to discover novel natural bioactive compounds and expand chemical diversity." }
+            }
+        ];
+
+        function selectInterest(index) {
+            selectedInterestIndex = index;
+            const cards = document.querySelectorAll('.interest-card');
+            cards.forEach((card, idx) => {
+                if (idx === index) {
+                    card.classList.add('selected');
+                } else {
+                    card.classList.remove('selected');
+                }
+            });
+
+            const data = interestData[index][currentLang];
+            document.getElementById('detailTitle').innerText = data.title;
+            document.getElementById('detailDesc').innerText = data.desc;
+        }
+
+        // Project Filter Buttons
+        function filterProjects(category) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const projects = document.querySelectorAll('.project-card');
+            projects.forEach(project => {
+                if (category === 'all' || project.getAttribute('data-category') === category) {
+                    project.style.display = 'flex';
+                } else {
+                    project.style.display = 'none';
+                }
+            });
+        }
+
+        // Expandable Research Roadmap
+        function toggleRoadmap(id) {
+            const card = document.getElementById(id);
+            card.classList.toggle('active');
+            const btnSpan = card.querySelector('.expand-toggle-btn span');
+            const isThai = currentLang === 'th';
+            if (card.classList.contains('active')) {
+                btnSpan.setAttribute('data-en', 'Collapse');
+                btnSpan.setAttribute('data-th', 'ย่อลง');
+                btnSpan.innerText = isThai ? 'ย่อลง' : 'Collapse';
+            } else {
+                btnSpan.setAttribute('data-en', 'Click to Expand');
+                btnSpan.setAttribute('data-th', 'คลิกเพื่อดูรายละเอียด');
+                btnSpan.innerText = isThai ? 'คลิกเพื่อดูรายละเอียด' : 'Click to Expand';
+            }
+        }
+
+        // Copy Email Function
+        function copyEmail() {
+            const email = "supatchaya.noolek@student.mahidol.ac.id";
+            navigator.clipboard.writeText(email).then(() => {
+                const toast = document.getElementById('toast');
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 3000);
+            });
+        }
+    </script>
+</body>
+</html>
